@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,4 +20,65 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  @apply font-dmSans;
+}
+
+@layer base {
+  h1{
+    @apply text-4xl md:text-6xl lg:text-7xl;
+  };
+  h2{
+    @apply text-4xl md:text-5xl lg:text-5xl;
+  };
+  h3{
+    @apply text-3xl md:text-2xl lg:text-3xl
+  };
+  h4{
+    @apply text-xl md:text-xl lg:text-lg
+  };
+  p{
+    @apply text-sm md:text-sm lg:text-xs
+  };
+}
+
+.break-sm::after {
+  content: "\A The Brands You Trust.";
+  white-space: pre;
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+  .break-md::after {
+    content: " The Brands \A You Trust.";
+    white-space: pre;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .break-lg::after {
+    content: " The Brands You \A Trust.";
+    white-space: pre;
+  }
+}
+
+.break-title-sm::after {
+  content: "\A and model, shipped fast and reliably.";
+  white-space: pre;
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+  .break-title-md::after {
+    content: " and model, shipped fast and \A reliably.";
+    white-space: pre;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .break-title-lg::after {
+    content: " and model, shipped fast and reliably.";
+    white-space: pre;
+  }
 }

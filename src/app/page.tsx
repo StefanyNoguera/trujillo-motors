@@ -1,101 +1,95 @@
-import Image from "next/image";
+"use client";
+import Image from 'next/image';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const handleClickCatalog = () => {
+    const element = document.getElementById('catalog');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const handleClickContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="snap-y snap-mandatory h-screen w-screen overflow-y-scroll">
+      <div className="snap-start h-screen bg-gray">
+        <div className='flex justify-between pl-7'>
+          <div className='relative h-20 w-24 md:h-24 md:w-28 lg:w-36'>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/logo.png"
+              layout="fill"
+              objectFit="contain"
+              alt="Logo"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+          <div className='flex items-top pt-4 md:pt-3 pr-5'>
+            <h3 className='md:p-4 p-2 text-xl md:text-2xl'>
+              <button onClick={handleClickCatalog} className='text-beige'>Catalog</button>
+            </h3>
+            <h3 className='md:p-4 p-2 text-xl md:text-2xl'>
+              <button onClick={handleClickContact} className='text-beige'>Contact</button>
+            </h3>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        <div className='flex flex-col items-center justify-center text-center pt-32 md:pt-20 lg:pt-6'>
+          <h1 className="text-beige break-sm break-md break-lg">
+            The Parts You Need.
+          </h1>
+          <h4 className='text-f-dark-gray break-title-sm break-title-md break-title-lg md:text-2xl lg:text-3xl pb-12 pt-3'>
+            Discover premium parts for every make
+          </h4>
+          <h4 className='text-beige bg-red p-3 px-4'>
+           Find Your Part
+          </h4>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div className="relative w-full h-3/5 overflow-hidden">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src="/carro-sm.png"
+            layout="fill"
+            objectFit="cover"
+            alt="Carro"
+            className="pb-32"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+      <div className="snap-start h-screen bg-beige" id='catalog'>
+
+      </div>
+
+      <div className="snap-start h-screen bg-gray" id='contact'>
+
+      </div>
     </div>
   );
 }
