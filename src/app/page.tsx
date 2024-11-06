@@ -1,7 +1,17 @@
 "use client";
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [error, setError] = useState('');
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   const handleClickCatalog = () => {
     const element = document.getElementById('catalog');
     if (element) {
@@ -21,6 +31,32 @@ export default function Home() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleSubmit = () => {
+    // Clear the form fields
+    if (!name || !email || !message) {
+      setError('All fields must be filled out.');
+      return;
+    }
+
+    // Validate email format
+    if (!emailRegex.test(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    // If all validations pass, show modal and clear error
+    setError('');
+
+    setShowModal(true);
+    setName('');
+    setEmail('');
+    setMessage('');
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -84,13 +120,30 @@ export default function Home() {
             <h1 className='lg:pb-12 lg:pt-24 md:pt-28 md:pb-12 pt-32 pb-9'>Contact us</h1>
             <div>
               <h4>Your Name</h4>
-              <input type="text" className='w-full text-gray border-b border-gray bg-transparent mb-4 p-2 focus:outline-none'/>
+              <input
+                type="text"
+                className='w-full text-gray border-b border-gray bg-transparent mb-4 p-2 focus:outline-none'
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
               <h4>Email Address*</h4>
-              <input type="text" className='w-full text-gray border-b border-gray bg-transparent mb-4 p-2 focus:outline-none'/>
+              <input
+                type="text"
+                className='w-full text-gray border-b border-gray bg-transparent mb-4 p-2 focus:outline-none'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <h4>Your Message</h4>
-              <textarea className='w-full text-gray border-b border-gray bg-transparent mb-4 p-2 focus:outline-none' rows='4'></textarea>
+              <textarea
+                className='w-full text-gray border-b border-gray bg-transparent mb-4 p-2 focus:outline-none'
+                rows='4'
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
+              {/* Show error message */}
+              {error && <p className="text-red-500 text-sm">{error}</p>}
               <div className='flex justify-end'>
-                <button className='text-beige bg-red p-3 px-4 '>
+                <button className='text-beige bg-red p-3 px-4' onClick={handleSubmit}>
                   <h4>Send Now</h4>
                 </button>
               </div>
@@ -116,13 +169,23 @@ export default function Home() {
             <h4 className='text-right'>Terms and Conditions</h4>
           </div>
         </div>
-
-
-
-
-
-
       </div>
+      {showModal && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
+              <h3 className="text-lg font-bold text-green-500 mb-4">Message Sent!</h3>
+              <p>Your message has been successfully sent. We'll get back to you shortly.</p>
+              <div className="mt-8">
+                <button
+                  className="text-beige bg-red p-2 px-6 rounded-md"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
     </div>
   );
 }
