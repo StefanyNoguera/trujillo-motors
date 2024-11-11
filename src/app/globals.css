@@ -82,3 +82,29 @@ body {
     white-space: pre;
   }
 }
+
+.break-phrase::after {
+  content: "Looking for your dream car?";
+  white-space: pre;
+}
+
+/* Small screens */
+@media (max-width: 767px) {
+  .break-phrase::after {
+    content: "Looking for your \A dream car?";
+  }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .break-phrase::after {
+    content: "Looking for your dream car?";
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .break-phrase::after {
+    content: "Looking for your \A dream car?";
+  }
+}
