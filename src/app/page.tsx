@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,77 +13,78 @@ export default function Home() {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const [currentPage, setCurrentPage] = useState(1); // for pagination
   const [screenWidth, setScreenWidth] = useState(0);
+  const isLargeScreen = useMediaQuery({ query: '(min-width: 1024px)' });
 
   const products = [
     {
       name: "Brembo High-Performance Brake Kit",
-      price: "$1,200", image: "",
+      price: "$1,200", image: "/brembo-brake-kit.webp",
       description: "Complete front and rear brake kit with Brembo’s high-performance rotors and calipers for precision stopping power."
     },
     {
       name: "EBC Stage 5 SuperStreet Brake Kit",
       price: "$780",
-      image: "",
+      image: "/ebc-brake-kit.jpg",
       description: "High-performance brake pads and rotors designed for improved braking in high-speed or heavy-load situations."
     },
     {
       name: "Akebono Ceramic Brake Pads (Set of 4)",
       price: "$380",
-      image: "",
+      image: "/akebono-brake-pads.jpg",
       description: "High-quality ceramic brake pads offering quiet, low-dust performance with excellent stopping power."
     },
     {
       name: "MagnaFlow Performance Exhaust System",
       price: "$1,050",
-      image: "",
+      image: "/magnaflow-exhaust-system.jpg",
       description: "Premium stainless steel cat-back exhaust system designed for optimized flow and enhanced horsepower."
     },
     {
       name: "Borla ATAK Axle-Back Exhaust",
       price: "$1,150",
-      image: "",
+      image: "/borla-back-exhaust.jpg",
       description: "Aggressive sound and performance gains with Borla’s premium stainless steel axle-back exhaust system."
     },
     {
       name: "Bilstein B8 Shock Absorbers (Set of 4)",
       price: "$960",
-      image: "",
+      image: "/bilstein-shock-absorbers.webp",
       description: "Heavy-duty shock absorbers engineered to improve handling and control in all driving conditions."
     },
     {
       name: "K&N Cold Air Intake",
       price: "$420",
-      image: "",
+      image: "/kn-cold-air-intake.jpg",
       description: "Premium intake system boosting horsepower and throttle response, made from high-quality aluminum and featuring washable filters."
     },
     {
       name: "Holley Sniper EFI Kit",
       price: "$1,350",
-      image: "",
+      image: "/holley-efi-kit.jpg",
       description: "Modern EFI conversion kit for classic carbureted engines, designed for better fuel economy and performance."
     },
     {
       name: "Edelbrock Supercharger Kit",
       price: "$6,000",
-      image: "",
+      image: "/edelbrock-supercharger-kit.jpeg",
       description: "Complete supercharger kit to boost horsepower and torque, engineered for maximum performance in street applications."
     },
     {
       name: "AEM Engine Management System",
       price: "$1,600",
-      image: "",
+      image: "/aem-engine-system.png",
       description: "Full standalone engine management system for precise tuning and control over high-performance engines."
     },
     {
       name: "Mishimoto Aluminum Radiator",
       price: "$460",
-      image: "",
+      image: "/mishimoto-aluminum-radiator.webp",
       description: "High-quality aluminum radiator designed for improved cooling capacity and durability under high-stress conditions."
     },
     {
       name: "Optima RedTop AGM Battery",
       price: "$350",
-      image: "",
+      image: "/optima-agm-battery.jpg",
       description: "AGM battery with high starting power, specially designed for vehicles with heavy electrical loads."
     },
   ];
@@ -217,26 +219,26 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='flex flex-col items-center justify-center text-center pt-32 md:pt-20 lg:pt-6'>
+        <div className='flex flex-col items-center justify-center text-center pt-32 md:pt-20 lg:pt-1'>
           <h1 className="text-beige break-sm break-md break-lg">
             The Parts You Need.
           </h1>
-          <h4 className='text-f-dark-gray break-title-sm break-title-md break-title-lg md:text-2xl lg:text-3xl pb-12 pt-3'>
+          <h4 className='text-f-dark-gray break-title-sm break-title-md break-title-lg md:text-2xl lg:text-3xl pb-6 pt-3'>
             Discover premium parts for every make
           </h4>
           <h4 className='text-beige bg-red p-3 px-4'>
            <button onClick={handleClickCatalog}>Find Your Part</button>
           </h4>
         </div>
-        {/* <div className="relative w-full h-3/5 overflow-hidden">
+        <div className="relative w-full h-3/5 overflow-hidden">
           <Image
-            src="/carro-sm.png"
+            src={isLargeScreen ? "/carro.png" : "/carro-sm.png"}
             layout="fill"
             objectFit="cover"
             alt="Carro"
-            className="pb-32"
+            className="pb-32 lg:pb-24"
           />
-        </div> */}
+        </div>
       </div>
 
       <div className="snap-start h-screen bg-f-light-gray flex flex-col" id='catalog'>
@@ -246,7 +248,7 @@ export default function Home() {
             <div key={index} className="p-1 text-gray">
               <div className="relative h-40 mb-4">
                 <Image
-                  src={"/dream-car-sm.jpg"}
+                  src={product.image}
                   layout="fill"
                   objectFit="cover"
                   alt={product.name}
@@ -286,7 +288,7 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row-reverse lg:justify-between w-full items-center px-6 h-full">
           <div className="relative lg:w-1/2 w-[95%] lg:h-[90%] h-[57%] lg:ml-6 mt-6 lg:mt-0">
             <Image
-              src="/dream-car-sm.jpg"
+              src="/dream-car.jpg"
               layout="fill"
               objectFit="cover"
               alt="Dream Car"
