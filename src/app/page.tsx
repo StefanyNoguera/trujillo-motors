@@ -296,10 +296,10 @@ export default function Home() {
 
           <div className="text-beige md:w-1/2 flex flex-col items-center justify-center text-center pr-6">
             <h1 className="mb-4 break-phrase mt-7 md:mt-10 lg:mt-0"></h1>
-            <h4 className='text-f-dark-gray md:text-2xl lg:text-3xl lg:pb-12 lg:pt-3'>
+            <h4 className="text-f-dark-gray md:text-2xl lg:text-3xl lg:pb-12 lg:pt-3">
               Let us help you find the perfect vehicle to match your needs and lifestyle.
             </h4>
-            <h4 className='text-beige bg-red p-2 px-3 mt-3 lg:p-3 lg:px-4'>
+            <h4 className="text-beige bg-red p-2 px-3 mt-3 lg:p-3 lg:px-4">
               <button onClick={handleClickContact}>Contact us</button>
             </h4>
           </div>
