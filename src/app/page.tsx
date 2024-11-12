@@ -13,7 +13,7 @@ export default function Home() {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const [currentPage, setCurrentPage] = useState(1); // for pagination
   const [screenWidth, setScreenWidth] = useState(0);
-  const isLargeScreen = useMediaQuery({ query: '(min-width: 1024px)' });
+  const isLargeScreen = screenWidth >= 1024;
 
   const products = [
     {
@@ -96,16 +96,16 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // Update the screen width on resize
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
+    // Function to update screen width
+    const handleResize = () => setScreenWidth(window.innerWidth);
 
-    window.addEventListener('resize', handleResize);
-
-    // Call the resize handler on mount
+    // Initial check
     handleResize();
 
+    // Add event listener on mount
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup on unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
