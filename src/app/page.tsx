@@ -18,7 +18,7 @@ export default function Home() {
     {
       name: "Brembo High-Performance Brake Kit",
       price: "$1,200", image: "/brembo-brake-kit.webp",
-      description: "Complete front and rear brake kit with Brembo’s high-performance rotors and calipers for precision stopping power."
+      description: "Complete front and rear brake kit with Brembo&rsquo;s high-performance rotors and calipers for precision stopping power."
     },
     {
       name: "EBC Stage 5 SuperStreet Brake Kit",
@@ -42,7 +42,7 @@ export default function Home() {
       name: "Borla ATAK Axle-Back Exhaust",
       price: "$1,150",
       image: "/borla-back-exhaust.jpg",
-      description: "Aggressive sound and performance gains with Borla’s premium stainless steel axle-back exhaust system."
+      description: "Aggressive sound and performance gains with Borla&rsquo;s premium stainless steel axle-back exhaust system."
     },
     {
       name: "Bilstein B8 Shock Absorbers (Set of 4)",
@@ -242,7 +242,7 @@ export default function Home() {
 
       <div className="snap-start h-screen bg-f-light-gray flex flex-col" id="catalog">
         <h1 className="text-center text-gray py-10 md:py-6 lg:py-4">Your Best Parts</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-10 px-10 lg:px-6 gap-4  flex-grow">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-10 lg:px-6 gap-4  flex-grow">
           {getVisibleProducts().map((product, index) => (
             <div key={index} className="p-1 text-gray">
               <div className="relative h-40 mb-4">
@@ -329,7 +329,7 @@ export default function Home() {
               <h4>Your Message</h4>
               <textarea
                 className="w-full text-gray border-b border-gray bg-transparent mb-4 p-2 focus:outline-none"
-                rows="4"
+                rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
@@ -369,7 +369,7 @@ export default function Home() {
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
               <h3 className="text-lg font-bold text-green-500 mb-4">Message Sent!</h3>
-              <p>Your message has been successfully sent. We"ll get back to you shortly.</p>
+              <p>Your message has been successfully sent. We&rsquo;ll get back to you shortly.</p>
               <div className="mt-8">
                 <button
                   className="text-beige bg-red p-2 px-6 rounded-md"
